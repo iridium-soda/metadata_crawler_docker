@@ -11,6 +11,7 @@
 ```bash
 python -m venv keywords_venv
 source keywords_venv/bin/activate
+pip install -r requirements.txt
 ```
 
 ### Install geckodriver
