@@ -161,3 +161,4 @@ cython_debug/
 
 # Python venv
 keywords/keywords_venv
+proxy/proxyvenv
