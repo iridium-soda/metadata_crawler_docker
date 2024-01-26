@@ -36,7 +36,7 @@ proxy:latest
 
 向代理池POST请求代理IP格式:
 
-```json
+```bash
 curl -X POST -H "Content-Type: application/json" \
 -d '{"type":"get_proxy","thread_index":0}' \
 http://localhost:10756
@@ -50,7 +50,7 @@ http://localhost:10756
 ```
 
 ### 报告代理失效
-```json
+```bash
 curl -X POST -H "Content-Type: application/json" \
 -d '{"type":"report","thread_index":0}' \
 http://localhost:10756
