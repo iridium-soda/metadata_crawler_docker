@@ -173,7 +173,6 @@ if __name__ == "__main__":
     logger.info("Start to crawl keywords")
     for index in range(len(wordDict)):
         keywordsFile = "./data/keyWordList-" + wordDict[divison] + ".txt"
-        # 这里路径写死了方便挂载 测试环境用./keyWordList-,部署环境用/data/keyWordList-
         logger.info(f"Start to crawl keywords with {wordDict[index]}")
         if os.path.exists(keywordsFile):
             with open(keywordsFile, "r") as f:
