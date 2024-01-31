@@ -86,6 +86,7 @@ docker run \
 ```
 ### Docker-compose运行
 
+运行前需要在环境变量中设置爬取前缀，并在`docker-compose.yaml`中调整代理URL
 ```bash
 PREFIX="1";sudo docker-compose up -d
 ```
