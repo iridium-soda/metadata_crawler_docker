@@ -50,4 +50,4 @@ python src/main.py
 nohup python src/main.py &
 ```
 
-数据在`./data`里
+数据在`./data`里，格式参见示例

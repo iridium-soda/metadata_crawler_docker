@@ -163,3 +163,7 @@ cython_debug/
 keywords/keywords_venv
 proxy/proxyvenv
 docker_images/imagevenv
+metadata/metavenv
+
+# Mongo data
+/database/*

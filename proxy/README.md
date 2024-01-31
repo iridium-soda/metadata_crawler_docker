@@ -8,14 +8,20 @@
 
 ## Usage
 
+### Build
+```bash
+sudo docker build -t proxy:latest .
+```
+
 ### 单独启动
 
 ```bash
-sudo docker build -t proxy:latest .
 sudo docker run -d -p 10756:10756 \
+--name proxy \
+--network meta \
 -e PROXY_URL="http://api.proxy.ip2world.com/getProxyIp?num=1&lb=4&return_type=txt&protocol=http" \
 -e PORT=10756 \
--e NUM_WORKERS=10 \
+-e MAX_THREADS=8 \
 proxy:latest 
 ```
 
@@ -45,7 +51,7 @@ http://localhost:10756
 返回格式
 ```json
 {
-    "proxy": '43.159.30.199:19526'
+    "proxy": "43.159.30.199:19526"
 }
 ```
 
