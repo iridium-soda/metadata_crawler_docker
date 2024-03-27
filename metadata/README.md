@@ -54,6 +54,8 @@ sudo docker network create  -d bridge meta
 # /metadata
 docker run --name mongo --network=meta -v ./../database:/data/db -v ./data:/result --restart=unless-stopped mongo:latest
 ```
+注意:如果需要后台运行,在参数中加上`-d`
+
 
 注意:如果mongo容器意外关闭,可以通过运行相同指令自动恢复
 
@@ -74,14 +76,12 @@ docker run \
   --name metadata_1 \
   --network=meta \
   -e PREFIX=1 \
-  -e API_URL=http://api.proxy.ip2world.com/getProxyIp?num=1&lb=4&return_type=txt&protocol=http \
+  -e API_URL="http://api.proxy.ip2world.com/getProxyIp?num=1&lb=4&return_type=txt&protocol=http" \
   -e MONGO_HOST=mongo \
   -e MONGO_PORT=27017 \
   -e DB_NAME=metadata \
   -v ./../docker_images/data:/data \
-  --restart-condition=on-failure \
-  --restart-delay=5s \
-  --restart-max-attempts=3 \
+  --restart=on-failure \
   crawler:latest
 ```
 ### Docker-compose运行
