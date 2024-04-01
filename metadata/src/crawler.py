@@ -148,7 +148,6 @@ def worker(raw_image: str, index: int, num_images: int) -> list:
                 result["full_description"] = result["description"]
             result["updated"] = content["last_updated"]
             result["pull_count"] = content["pull_count"]
-
             break
         except:
             if retry == max_retries:
@@ -215,6 +214,7 @@ def fetch_tags(namespace, image, index, num_images):
             content = utils.get_url_with_proxy(url)
             for result in content["results"]:
                 tags.append(result["name"])
+            logger.info(f"[{index + 1}/{num_images}] {namespace}/{image} has {len(tags)} tags now")
             if len(tags) >= 100:
                 logger.info(
                     f"[{index + 1}/{num_images}] {namespace}/{image} has tags more than 100, turncate."
@@ -248,6 +248,7 @@ def fetch_images_by_tag(namespace, image, tag, index, image_nums):
     max_retries, retry = 5, 0
     while retry < max_retries:
         try:
+            logger.info(f"[{index}/{image_nums}] {namespace}/{image}:{tag} is ready to fetch")
             content = utils.get_url_with_proxy(url)
             result = list()
             for image_obj in content:

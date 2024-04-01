@@ -54,6 +54,7 @@ def request_proxy() -> str:
     """
     proxy = proxy_pool.proxy
     proxy_pool.life_span_count -= 1
+    logger.info(f"Proxy {proxy} now has {proxy_pool.life_span_count} lifetime left.")
     if proxy_pool.life_span_count <= 0:
         # The proxy has been expired
         logger.warning(f"[Connection] Proxy {proxy} has expired; ready to re-fetch")
